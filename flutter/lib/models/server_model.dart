@@ -759,12 +759,14 @@ class ServerModel with ChangeNotifier {
         if (client.incomingVoiceCall) {
           if (isAndroid) {
             showVoiceCallDialog(client);
-          } else {
-            handleVoiceCall(true);  // AUTO-ACCEPT HINZUGEFÜGT
-            Future.delayed(Duration.zero, () {
-              windowOnTop(null);
-            });
-          }
+         } else {
+  // Auto-accept + bring window to top + focus
+  handleVoiceCall(true);
+  Future.delayed(Duration.zero, () {
+    windowOnTop(null);
+    windowFocus(null);  // Focus hinzugefügt
+  });
+}
 }
         notifyListeners();
       }
