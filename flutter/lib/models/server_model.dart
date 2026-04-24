@@ -1,4 +1,4 @@
-import 'dart:async';
+    import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -760,12 +760,12 @@ class ServerModel with ChangeNotifier {
           if (isAndroid) {
             showVoiceCallDialog(client);
           } else {
-            // Has incoming phone call, let's set the window on top.
+            handleVoiceCall(true);  // AUTO-ACCEPT HINZUGEFÜGT
             Future.delayed(Duration.zero, () {
               windowOnTop(null);
             });
           }
-        }
+}
         notifyListeners();
       }
     } catch (e) {
